@@ -1,7 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Authors>softaware gmbh</Authors>
+		<Company>softaware gmbh</Company>
+		<Description>A Sitemap Generation Library.</Description>
+		<PackageTags>softaware web sitemap</PackageTags>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/softawaregmbh/library-sitemap</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/softawaregmbh/library-sitemap</PackageProjectUrl>
+		<RootNamespace>softaware.Sitemap</RootNamespace>
+		<AssemblyName>softaware.Sitemap</AssemblyName>
+		<Version>1.0.0</Version>
+		<PackageId>softaware.Sitemap</PackageId>
+		<PackageIconUrl>https://secure.gravatar.com/avatar/d441f5a5514d2afce7da518a89f028d0?s=512</PackageIconUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<FileVersion>1.0.0.0</FileVersion>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	</PropertyGroup>
 
 </Project>

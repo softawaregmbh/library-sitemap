@@ -1,0 +1,11 @@
+﻿<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml"
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.example.com</loc>
+		<xhtml:link rel="alternative" hreflang="de" href="https://www.example.com/de" />
+	</url>
+	<url>
+		<loc>https://www.example.com/de</loc>
+		<xhtml:link rel="alternative" hreflang="en" href="https://www.example.com" />
+	</url>
+</urlset>
