@@ -44,8 +44,8 @@ namespace softaware.Sitemap
                     node.Alternatives?.Select(alt => new XElement(
                         xhtml + "link",
                         new XAttribute("rel", "alternative"),
-                        new XAttribute("hreflang", alt.Key),
-                        new XAttribute("href", alt.Value)
+                        new XAttribute("hreflang", alt.Language),
+                        new XAttribute("href", alt.Url)
                     )));
 
                 root.Add(urlElement);

@@ -20,25 +20,24 @@ namespace softaware.Sitemap
         public DateTime? LastModified { get; set; }
         public decimal? Priority { get; set; }
         public string Url { get; set; }
-        public IDictionary<string, string> Alternatives { get; set; } = new Dictionary<string, string>();
+        public IEnumerable<(string Language, string Url)> Alternatives { get; set; } = new List<(string, string)>();
 
-        public static IEnumerable<SitemapNode> FromLocalized(IDictionary<string, SitemapNode> nodes)
+        public static IEnumerable<SitemapNode> FromLocalized(IEnumerable<LocalizedSitemapNode> nodes)
         {
+            var alternatives = nodes.Select(n => (n.Language, n.Node.Url)).ToList();
             foreach (var node in nodes)
             {
-                node.Value.Alternatives = nodes
-                    .Where(n => n.Key != node.Key)
-                    .ToDictionary(n => n.Key, n => n.Value.Url);
+                node.Node.Alternatives = alternatives;
             }
 
-            return nodes.Select(n => n.Value).ToList();
+            return nodes.Select(n => n.Node).ToList();
         }
 
-        public static IEnumerable<SitemapNode> FromLocalized(IEnumerable<string> languages, Func<string, string> urlSelector)
+        public static IEnumerable<SitemapNode> FromLocalized(IEnumerable<string> languages, Func<string, SitemapNode> nodeSelector)
         {
-            var urls = languages.ToDictionary(
-                lang => lang,
-                lang => new SitemapNode(urlSelector(lang)));
+            var urls = languages
+                .Select(lang => new LocalizedSitemapNode(lang, nodeSelector(lang)))
+                .ToList();
 
             return SitemapNode.FromLocalized(urls);
         }

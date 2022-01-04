@@ -24,10 +24,10 @@ namespace softaware.Sitemap.Test
             var sitemap = new Sitemap();
             sitemap.AddNode(new SitemapNode("https://www.example.com")
             {
-                Alternatives = new Dictionary<string, string>
+                Alternatives = new List<(string, string)>
                 {
-                    ["de"] = "https://www.example.com/de",
-                    ["fr"] = "https://www.example.com/fr"
+                    ("de", "https://www.example.com/de"),
+                    ("fr", "https://www.example.com/fr")
                 }
             });
             var result = sitemap.GenerateSitemap();
@@ -40,14 +40,42 @@ namespace softaware.Sitemap.Test
         public void SitemapWithBidirectionalAlternatives_Test()
         {
             var sitemap = new Sitemap();
-            sitemap.AddNodes(SitemapNode.FromLocalized(new Dictionary<string, SitemapNode>
+            sitemap.AddNodes(SitemapNode.FromLocalized(new List<LocalizedSitemapNode>
             {
-                ["en"] = new SitemapNode("https://www.example.com"),
-                ["de"] = new SitemapNode("https://www.example.com/de"),
+                new LocalizedSitemapNode("en", new SitemapNode("https://www.example.com")),
+                new LocalizedSitemapNode("de", new SitemapNode("https://www.example.com/de")),
             }));
             var result = sitemap.GenerateSitemap();
 
             var expected = File.ReadAllText("ExpectedResults/SitemapWithBidirectionalAlternatives.xml");
+            Assert.True(XNode.DeepEquals(XDocument.Parse(expected), XDocument.Parse(result)));
+        }
+
+        [Fact]
+        public void SitemapWitMultipleAlternativesForOneLang_Test()
+        {
+            var sitemap = new Sitemap();
+            sitemap.AddNodes(SitemapNode.FromLocalized(new List<LocalizedSitemapNode>
+            {
+                new LocalizedSitemapNode("de", "https://www.example.com/de1"),
+                new LocalizedSitemapNode("de", "https://www.example.com/de2"),
+            }));
+            var result = sitemap.GenerateSitemap();
+
+            var expected = File.ReadAllText("ExpectedResults/SitemapWitMultipleAlternativesForOneLang.xml");
+            Assert.True(XNode.DeepEquals(XDocument.Parse(expected), XDocument.Parse(result)));
+        }
+
+        [Fact]
+        public void SitemapWitAlternativesUsingFunc_Test()
+        {
+            var sitemap = new Sitemap();
+            sitemap.AddNodes(SitemapNode.FromLocalized(
+                new[] { "en", "de" }, 
+                lang => new SitemapNode($"https://www.example.com/{lang}")));
+            var result = sitemap.GenerateSitemap();
+
+            var expected = File.ReadAllText("ExpectedResults/SitemapWitAlternativesUsingFunc.xml");
             Assert.True(XNode.DeepEquals(XDocument.Parse(expected), XDocument.Parse(result)));
         }
     }
