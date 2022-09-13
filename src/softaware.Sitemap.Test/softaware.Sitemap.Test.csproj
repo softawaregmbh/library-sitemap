@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -28,16 +28,16 @@
     <None Update="ExpectedResults\SimpleSitemap.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ExpectedResults\SitemapWithAlternatives.xml">
+    <None Update="ExpectedResults\SitemapWithAlternates.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ExpectedResults\SitemapWitAlternativesUsingFunc.xml">
+    <None Update="ExpectedResults\SitemapWithAlternatesUsingFunc.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ExpectedResults\SitemapWitMultipleAlternativesForOneLang.xml">
+    <None Update="ExpectedResults\SitemapWithMultipleAlternatesForOneLang.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ExpectedResults\SitemapWithBidirectionalAlternatives.xml">
+    <None Update="ExpectedResults\SitemapWithBidirectionalAlternates.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

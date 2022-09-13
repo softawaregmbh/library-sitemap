@@ -20,14 +20,14 @@ namespace softaware.Sitemap
         public DateTime? LastModified { get; set; }
         public decimal? Priority { get; set; }
         public string Url { get; set; }
-        public IEnumerable<(string Language, string Url)> Alternatives { get; set; } = new List<(string, string)>();
+        public IEnumerable<(string Language, string Url)> Alternates { get; set; } = new List<(string, string)>();
 
         public static IEnumerable<SitemapNode> FromLocalized(IEnumerable<LocalizedSitemapNode> nodes)
         {
-            var alternatives = nodes.Select(n => (n.Language, n.Node.Url)).ToList();
+            var alternates = nodes.Select(n => (n.Language, n.Node.Url)).ToList();
             foreach (var node in nodes)
             {
-                node.Node.Alternatives = alternatives;
+                node.Node.Alternates = alternates;
             }
 
             return nodes.Select(n => n.Node).ToList();
