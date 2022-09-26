@@ -1,0 +1,13 @@
+﻿<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml"
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.example.com/de1</loc>
+		<xhtml:link rel="alternate" hreflang="de" href="https://www.example.com/de1" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://www.example.com/de2" />
+	</url>
+	<url>
+		<loc>https://www.example.com/de2</loc>
+		<xhtml:link rel="alternate" hreflang="de" href="https://www.example.com/de1" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://www.example.com/de2" />
+	</url>
+</urlset>

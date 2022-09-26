@@ -2,7 +2,7 @@
 		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://www.example.com</loc>
-		<xhtml:link rel="alternative" hreflang="de" href="https://www.example.com/de" />
-		<xhtml:link rel="alternative" hreflang="fr" href="https://www.example.com/fr" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://www.example.com/de" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://www.example.com/fr" />
 	</url>
 </urlset>

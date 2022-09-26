@@ -41,9 +41,9 @@ namespace softaware.Sitemap
                     node.Priority == null ? null : new XElement(
                         xmlns + "priority",
                         node.Priority.Value.ToString("F1", CultureInfo.InvariantCulture)),
-                    node.Alternatives?.Select(alt => new XElement(
+                    node.Alternates?.Select(alt => new XElement(
                         xhtml + "link",
-                        new XAttribute("rel", "alternative"),
+                        new XAttribute("rel", "alternate"),
                         new XAttribute("hreflang", alt.Language),
                         new XAttribute("href", alt.Url)
                     )));
