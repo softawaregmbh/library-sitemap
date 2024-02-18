@@ -42,8 +42,8 @@ namespace softaware.Sitemap.Test
             var sitemap = new Sitemap();
             sitemap.AddNodes(SitemapNode.FromLocalized(new List<LocalizedSitemapNode>
             {
-                new LocalizedSitemapNode("en", new SitemapNode("https://www.example.com")),
-                new LocalizedSitemapNode("de", new SitemapNode("https://www.example.com/de")),
+                new("en", new SitemapNode("https://www.example.com")),
+                new("de", new SitemapNode("https://www.example.com/de")),
             }));
             var result = sitemap.GenerateSitemap();
 
@@ -57,8 +57,8 @@ namespace softaware.Sitemap.Test
             var sitemap = new Sitemap();
             sitemap.AddNodes(SitemapNode.FromLocalized(new List<LocalizedSitemapNode>
             {
-                new LocalizedSitemapNode("de", "https://www.example.com/de1"),
-                new LocalizedSitemapNode("de", "https://www.example.com/de2"),
+                new("de", "https://www.example.com/de1"),
+                new("de", "https://www.example.com/de2"),
             }));
             var result = sitemap.GenerateSitemap();
 
@@ -71,7 +71,7 @@ namespace softaware.Sitemap.Test
         {
             var sitemap = new Sitemap();
             sitemap.AddNodes(SitemapNode.FromLocalized(
-                new[] { "en", "de" }, 
+                new[] { "en", "de" },
                 lang => new SitemapNode($"https://www.example.com/{lang}")));
             var result = sitemap.GenerateSitemap();
 

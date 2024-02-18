@@ -39,7 +39,7 @@ namespace softaware.Sitemap
                 .Select(lang => new LocalizedSitemapNode(lang, nodeSelector(lang)))
                 .ToList();
 
-            return SitemapNode.FromLocalized(urls);
+            return FromLocalized(urls);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace softaware.Sitemap
 {
     public sealed class Sitemap
     {
-        private readonly List<SitemapNode> nodes = new List<SitemapNode>();
+        private readonly List<SitemapNode> nodes = [];
 
         public void AddNode(SitemapNode node)
             => this.nodes.Add(node);
@@ -23,13 +23,13 @@ namespace softaware.Sitemap
             XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
             XNamespace xhtml = "http://www.w3.org/1999/xhtml";
 
-            XElement root = new XElement(
+            XElement root = new(
                 xmlns + "urlset",
                 new XAttribute(XNamespace.Xmlns + "xhtml", xhtml));
 
-            foreach (SitemapNode node in nodes)
+            foreach (SitemapNode node in this.nodes)
             {
-                XElement urlElement = new XElement(
+                XElement urlElement = new(
                     xmlns + "url",
                     new XElement(xmlns + "loc", Uri.EscapeUriString(node.Url)),
                     node.LastModified == null ? null : new XElement(

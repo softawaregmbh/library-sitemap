@@ -2,20 +2,14 @@
 
 namespace softaware.Sitemap
 {
-    public sealed class LocalizedSitemapNode
+    public sealed class LocalizedSitemapNode(string language, SitemapNode node)
     {
-        public LocalizedSitemapNode(string language, SitemapNode node)
-        {
-            this.Language = language ?? throw new ArgumentNullException(nameof(language));
-            this.Node = node ?? throw new ArgumentNullException(nameof(node));
-        }
-
         public LocalizedSitemapNode(string language, string url)
             : this(language, new SitemapNode(url))
         {            
         }
 
-        public string Language { get; set; }
-        public SitemapNode Node { get; set; }
+        public string Language { get; set; } = language ?? throw new ArgumentNullException(nameof(language));
+        public SitemapNode Node { get; set; } = node ?? throw new ArgumentNullException(nameof(node));
     }
 }
